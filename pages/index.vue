@@ -171,6 +171,7 @@
                               >
                                 <MarketNewsCardVue
                                   :news-headline="news.headline"
+                                  :news-summary="news.summary"
                                   :news-category="news.category"
                                   :news-img="news.image"
                                   :news-source="news.source"
@@ -423,6 +424,8 @@ export default {
   computed:{
     applicationNewsFeed(){
       const { displayingResult} = this.componentOptions.newsFeed;
+      console.log(this.pageData.marketNews)
+      if(this.pageData.marketNews === undefined){ return []}
       const marketNewsAll = [...this.pageData.marketNews];
       const useStartIndex = 0;
       const useEndIndex = displayingResult;

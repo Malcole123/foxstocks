@@ -41,10 +41,10 @@ class cacheControl{
         this.specialCacheMemory = {
                 homepage:{
                     setTime:1675710510814,
-                    maxAge:300000,
+                    maxAge:500000,
                     expires:1675710810814,
                     targetResults:[],
-                    marketNews:{}
+                    marketNews:[],
                 }
         }
     }

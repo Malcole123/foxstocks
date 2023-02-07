@@ -88,6 +88,7 @@ const fetchMarketNews = async ({category, paginationId})=>{
             token:process.env.NUXT_ENV_FINNHUB_API_KEY,
         }
     }).then(response=>{
+        return response.data;
     }).catch(err=>{
         return false
     });
