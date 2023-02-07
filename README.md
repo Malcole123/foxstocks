@@ -24,3 +24,8 @@ For detailed explanation on how things work, check out the [documentation](https
 You can see the Figma files this project was based on [here](https://www.figma.com/file/jTFGDyz1dyiByN1h6NcxyM/Fox-stocks-Dashboard-(Community)?node-id=0%3A1&t=EIlCC8DeUudVenST-1)
 
 
+## View live project
+
+You view the live version of this project [here](https://foxstocks.herokuapp.com/)
+
+
