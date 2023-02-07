@@ -1,0 +1,54 @@
+{
+    "version": 2,
+    "buildCommand":"nuxt build",
+    "builds": [
+      {
+        "src": "nuxt.config.js",
+        "use": "@nuxtjs/vercel-builder",
+        "config": {
+          "serverFiles": ["api/**/*"]
+        }
+      },
+      {
+        "src": "api/**/*.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "trailingSlash":false,
+    "installCommand":"npm install",
+    "headers":[
+      {
+        "source": "/(.*)",
+        "headers" : [
+          {
+            "key" : "X-Content-Type-Options",
+            "value" : "nosniff"
+          },
+          {
+            "key" : "X-Frame-Options",
+            "value" : "DENY"
+          },
+          {
+            "key" : "X-XSS-Protection",
+            "value" : "1; mode=block"
+          }
+        ]
+      },
+      {
+        "source": "/:path*",
+        "has": [
+          {
+            "type": "query",
+            "key": "authorized"
+          }
+        ],
+        "headers": [
+          {
+            "key": "x-authorized",
+            "value": "true"
+          }
+        ]
+      }
+    ]
+  }
+  
