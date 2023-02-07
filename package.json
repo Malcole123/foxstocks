@@ -54,6 +54,9 @@
     "vue-concise-slider": "^4.2.5",
     "vue-jest": "^3.0.4"
   },
+  "engines": {
+    "node": "16.3.2"
+  },
   "jest": {
     "transform": {
       "^.+\\.vue$": "vue-jest",
