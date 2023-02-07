@@ -54,6 +54,7 @@ export default {
     --webkit-box-orient:vertical;
     --webkit-line-clamp:2;
     overflow:hidden;
+    transition:0.3s ease-in-out;
     width:100%;
 
   }
@@ -76,12 +77,11 @@ export default {
     border-color:var(--app-grey-base-color)
   }
 
+
   .market-news-card:hover .market-news-summary{
     font-weight:500;
     color:black;
-
   }
-
 
 
 </style>

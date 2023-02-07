@@ -164,7 +164,7 @@
                           <div class="w-100">
                             <h3 class="app-text-small app-text-weight-md">Market News</h3>
                           </div>
-                            <div class="w-100 mt-3">
+                            <div class="w-100 mt-3 focus-list">
                               <div class="w-100 mb-3"
                               v-for="(news, index ) in applicationNewsFeed"
                               :key="'market-news-card-'+ index "
@@ -178,8 +178,11 @@
                                   :news-url="news.url" 
                                 />
                               </div>
+                          
+                            </div>
+                            <div class="w-100 mt-3">
                               <div class="w-100 d-flex justify-content-center flex-column align-items-center">
-                                <b-spinner class="mt-3" size="sm" v-if="componentOptions.newsFeed.fetching === true"></b-spinner>
+                                <b-spinner v-if="componentOptions.newsFeed.fetching === true" class="mt-3" size="sm" ></b-spinner>
                                 <b-button
                                 v-else
                                 class="app-btn-purple w-100" 
@@ -300,7 +303,6 @@ export default {
   async fetch() {
     await this.$axios.$get('/api/market-data/home/US').then(response=>{
       const { targetResults , marketNews,   ok } = response;
-      console.log(marketNews)
       if(ok === true){
         const pageData = {
           popularStocks:targetResults,
@@ -424,7 +426,6 @@ export default {
   computed:{
     applicationNewsFeed(){
       const { displayingResult} = this.componentOptions.newsFeed;
-      console.log(this.pageData.marketNews)
       if(this.pageData.marketNews === undefined){ return []}
       const marketNewsAll = [...this.pageData.marketNews];
       const useStartIndex = 0;
