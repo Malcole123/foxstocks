@@ -2,7 +2,9 @@
     "version": 2,
     "installCommand":"npm install",
     "buildCommand":"nuxt build",
+    "outputDirectory":"~/dist",
     "devCommand":"nuxt",
+    "framework":"nuxtjs",
     "functions": {
         "api/**/*.js": {
           "memory": 1024,
