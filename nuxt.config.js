@@ -73,7 +73,7 @@ export default {
   },
   server:{
     host:process.env.NUXT_ENV_HOST,
-    port:process.env.NUXT_ENV_PORT,
+    port:process.env.NUXT_PORT,
   },
   serverMiddleware:[
     '~/api/index'
