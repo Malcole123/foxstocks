@@ -22,3 +22,5 @@ For detailed explanation on how things work, check out the [documentation](https
 ## Special Directories
 
 You can see the Figma files this project was based on [here](https://www.figma.com/file/jTFGDyz1dyiByN1h6NcxyM/Fox-stocks-Dashboard-(Community)?node-id=0%3A1&t=EIlCC8DeUudVenST-1)
+
+
