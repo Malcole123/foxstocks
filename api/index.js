@@ -20,10 +20,6 @@ app.get('/test', (req, res)=>{
     res.send({ok:true})
 })
 
-app.listen( process.env.NUXT_PORT, ()=>{
-    console.log('listening on ' + process.env.NUXT_PORT)
-})
-
 
 export default {
     path:'/api',
