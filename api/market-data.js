@@ -28,12 +28,6 @@ const {
 } = process.env;
 
 
-const alpaca = new Alpaca({
-    keyId:NUXT_ENV_ALPACCA_API_KEY,
-    secretKey:NUXT_ENV_ALPACA_CLIENT_SECRET,
-});
-
-
 
 
 router.get('/home/:use_country', restrictCountryMiddleware,  async (req, res, next)=>{
