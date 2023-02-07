@@ -1,21 +1,17 @@
 {
     "version": 2,
-    "buildCommand":"nuxt build",
-    "builds": [
-      {
-        "src": "~/nuxt.config.js",
-        "use": "@nuxtjs/vercel-builder@0.23.0",
-        "config": {
-          "serverFiles": ["api/**/*"]
-        }
-      },
-      {
-        "src": "api/**/*.js",
-        "use": "@vercel/node"
-      }
-    ],
-    "trailingSlash":false,
     "installCommand":"npm install",
+    "buildCommand":"nuxt build",
+    "outpoutDirectory":"~/dist",
+    "devCommand":"nuxt",
+    "framework":"nuxtjs",
+    "functions": {
+        "api/**/*.js": {
+          "memory": 1024,
+          "maxDuration": 10
+        }
+    },
+    "trailingSlash":false,
     "headers":[
       {
         "source": "/(.*)",
