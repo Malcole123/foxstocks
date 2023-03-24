@@ -43,7 +43,6 @@ router.get('/home/:use_country', restrictCountryMiddleware,  async (req, res, ne
         return 
     }
     
-    console.log('fetch used')
     const stockSymbolFetch = fetchAllStockSymbolInfo({
         start:0,
         end:20,
