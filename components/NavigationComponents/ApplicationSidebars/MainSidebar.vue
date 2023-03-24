@@ -17,46 +17,18 @@
                     </div>
                     <div class="w-100 mt-2">
                             <div class="w-100 d-flex flex-column">
-                                <div class="app-sidebar-text sidebar-navigation-link sidebar-navigation-link-active">
+                                <div v-for="(link,index) in dashboardLinks"
+                                :key="'link-item-'+ index "
+                                :class="link.linkClass"
+                                @click="$router.push(link.link)"
+                                >
                                     <span class="material-symbols-outlined">
-                                        dashboard
+                                        {{  link.icon }}
                                     </span>
                                     
-                                    <span class="ml-3">
-                                        Dashboard
+                                    <span class="ml-3" style="width:fit-content">
+                                        {{  link.name }}
                                     </span>
-                                </div>
-                                <div class="app-sidebar-text sidebar-navigation-link mt-2">
-                                    <span class="material-symbols-outlined">
-                                        work
-                                    </span>
-                                   <span class="ml-3">
-                                        Portfolio
-                                   </span>
-                                </div>
-                                <div class="app-sidebar-text sidebar-navigation-link mt-2">
-                                    <span class="material-symbols-outlined">
-                                        discover_tune
-                                    </span>
-                                   <span class="ml-3">
-                                        Trading & Market
-                                   </span>
-                                </div>
-                                <div class="app-sidebar-text sidebar-navigation-link mt-2">
-                                    <span class="material-symbols-outlined">
-                                        all_inbox
-                                    </span>
-                                   <span class="ml-3">
-                                        Research Portal
-                                   </span>
-                                </div>
-                                <div class="app-sidebar-text sidebar-navigation-link mt-2">
-                                    <span class="material-symbols-outlined">
-                                        currency_exchange
-                                    </span>
-                                   <span class="ml-3">
-                                        Transactions
-                                   </span>
                                 </div>
                             </div>
                     </div>
@@ -87,18 +59,54 @@ export default {
             sidebarOpen:false,
             c_Class:{
                 parentClass:"application-sidebar",
-            }
+            },
+            dashboardLinks:[
+                {
+                    link:"/",
+                    name:"Dashboard",
+                    icon:"dashboard",
+                    linkClass:"app-sidebar-text sidebar-navigation-link",
+                },
+                {
+                    link:"/portfolio",
+                    name:"Portfolio",
+                    icon:"work",
+                    linkClass:"app-sidebar-text sidebar-navigation-link",
+                },
+                {
+                    link:"/trading",
+                    name:"Trading",
+                    icon:"discover_tune",
+                    linkClass:"app-sidebar-text sidebar-navigation-link",
+                },
+                {
+                    link:"/research",
+                    name:"Research",
+                    icon:"all_inbox",
+                    linkClass:"app-sidebar-text sidebar-navigation-link",
+                },
+                {
+                    link:"/transactions",
+                    name:"Transactions",
+                    icon:"currency_exchange",
+                    linkClass:"app-sidebar-text sidebar-navigation-link",
+                },
+            ]
         }
     },
     watch:{
         sidebarOverride(newVal,oldVal){
             this.sidebarOpen = newVal;
             this.toggleSidebar(newVal)
+        },
+        $route(newVal, oldVal){
+            this.checkNavlinkActive();
         }
     },
     mounted(){  
         this.sidebarOpen = this.sidebarOverride;
-        this.toggleSidebar(this.sidebarOpen)
+        this.toggleSidebar(this.sidebarOpen);
+        this.checkNavlinkActive();
     },
     methods:{
         sidebarMenuClick(){
@@ -125,6 +133,19 @@ export default {
                 useClass = useClass + " " + activeStateClass ;
             }
             this.c_Class.parentClass = useClass;
+        },
+        checkNavlinkActive(){
+            const activeClass = "sidebar-navigation-link-active";
+            const baseClass = "app-sidebar-text sidebar-navigation-link";
+            this.dashboardLinks = [...this.dashboardLinks].map((item,index)=>{
+                console.log(this.$route.path)
+                if(this.$route.path === item.link){
+                    item.linkClass = baseClass + " " + activeClass 
+                }else{
+                    item.linkClass = baseClass;
+                }
+                return item ;
+            })
         }
     },
 

@@ -45,6 +45,7 @@ export default {
     transition:0.3s ease-in-out;
     border-radius:var(--app-stndrd-radius);
     border:0.1px solid transparent;
+    background:var(--app-primary-light-color)!important;
   }
 
 
